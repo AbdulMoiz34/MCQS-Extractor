@@ -4,14 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCQS TASK</title>
+    <title>MCQS Extractor</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div>
-        <textarea id="textarea" cols="50" rows="30" id=""></textarea>
-        <button id="submit-btn">Submit</button>
+    <div class="container">
+        <header>
+            <h1>MCQS Extractor</h1>
+            <p>Extract and format multiple choice questions from text</p>
+        </header>
+
+        <div class="instructions">
+            <h2>How to Use</h2>
+            <ul>
+                <li>Enter your MCQs in the textarea below</li>
+                <li>Each question should end with a question mark (?)</li>
+                <li>Each option should be on a new line</li>
+                <li>Mark the correct answer with an asterisk (*) at the end</li>
+                <li>Separate different questions with an empty line</li>
+            </ul>
+        </div>
+
+        <div class="example-section">
+            <h3>Example Format</h3>
+
+            <p>Format your MCQs as shown below:</p>
+
+            <div class="example-code">What is the capital of France?
+                Paris*
+                London
+                Berlin
+                Madrid
+
+                Which planet is known as the Red Planet?
+                Venus
+                Mars*
+                Jupiter
+                Saturn</div>
+        </div>
+        <div class="input-section">
+            <h2>Enter Your MCQs</h2>
+            <textarea id="textarea" placeholder="Paste your MCQs here..."></textarea>
+            <div class="button-container">
+                <button id="submit-btn">Extract MCQs</button>
+                <button id="clear-btn" style="margin-left: 10px; background-color: #dc3545;">Clear</button>
+            </div>
+        </div>
+
+        <div class="results-section" id="results-section" style="display: block;">
+            <h2>Extracted MCQs</h2>
+            <div id="mcqs-container"></div>
+        </div>
     </div>
+
+    <footer style="text-align: center; margin-top: 30px; padding: 20px; color: #6c757d; font-size: 14px;">
+        <p>MCQS Extractor &copy; 2025</p>
+        <a href="https://github.com/abdulmoiz34" target="_blank">Abdul Moiz</a>
+    </footer>
 
     <script src="app.js"></script>
 </body>
