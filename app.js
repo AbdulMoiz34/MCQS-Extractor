@@ -3,7 +3,7 @@ const btn = document.getElementById("submit-btn");
 const clearBtn = document.getElementById("clear-btn");
 const mcqsContainer = document.getElementById("mcqs-container");
 
-const clickHandler = () => {
+const mcqsExtractor = () => {
     const questions = [];
     let question = {};
     let options = [];
@@ -36,6 +36,7 @@ const clickHandler = () => {
 }
 
 const extractMcqs = (questions) => {
+    document.getElementById("results-section").classList.add("active");
     mcqsContainer.innerHTML = "";
     for (let question of questions) {
         mcqsContainer.innerHTML += `<div class="mcq-container">
@@ -56,7 +57,7 @@ const clear = () => {
 }
 
 const main = () => {
-    const questions = clickHandler();
+    const questions = mcqsExtractor();
     extractMcqs(questions);
 }
 
