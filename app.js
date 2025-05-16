@@ -24,30 +24,29 @@ const mcqsExtractor = () => {
                 if (val[i].includes("*")) {
                     const ans = val[i].slice(0, -1);
                     question.ans = ans;
-                    options.push(ans);
                 } else {
                     options.push(val[i]);
                 }
             }
         }
     }
-
-    return questions;
+    return shuffle(questions);
 }
 
 const extractMcqs = (questions) => {
     document.getElementById("results-section").classList.add("active");
     mcqsContainer.innerHTML = "";
-    for (let question of questions) {
+    for (let ques of questions) {
+        const allOptions = shuffle([...ques.options, ques.ans]);
         mcqsContainer.innerHTML += `<div class="mcq-container">
-            <div class="question">Q1: ${question.question}</div>
-            <div class="options">
-                <div class="option correct-answer">A. ${question.ans}</div>
-                ${question.options.map((opt, idx) => {
-            return `<div class="option">${idx + 1}. ${opt}</div>`
+                    <div class="question">${ques.question}</div>
+                    <div class="options">
+                        ${allOptions.map((opt, idx) => {
+            const isCorrect = opt === ques.ans;
+            return `<div class="option ${isCorrect && 'correct-answer'}">${idx + 1}. ${opt}</div>`;
         }).join("")}
-            </div>
-        </div>`;
+                    </div>
+                </div>`;
     }
 }
 
@@ -61,5 +60,9 @@ const main = () => {
     extractMcqs(questions);
 }
 
+const shuffle = (arr) => {
+    return [...arr].sort(() => Math.random() - 0.5);
+}
+
 btn.addEventListener("click", main);
-document.getElementById("clear-btn").addEventListener("click", clear);
+clearBtn.addEventListener("click", clear);
